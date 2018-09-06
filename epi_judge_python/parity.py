@@ -1,16 +1,17 @@
 from test_framework import generic_test
 
 
+# EOPIp26
+def count_bits(x):
+    num_bits = 0
+    while x:
+        num_bits += x & 1
+        x >>= 1
+    return num_bits
+
+
 def parity(natural):
-    if natural == 0:
-        parity = 0
-    else:
-        seen_ones = 0
-        while natural > 0:
-            seen_ones += natural % 2  # 1 when natural is odd
-            natural = natural >> 1
-        parity = seen_ones %2
-    return parity
+    return count_bits(natural) % 2
 
 
 if __name__ == '__main__':
