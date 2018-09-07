@@ -1,9 +1,13 @@
 from test_framework import generic_test
 
 
-def reverse_bits(x):
-    # TODO - you fill in here.
-    return 0
+def reverse_bits_rjimeno(x):
+    xb = "{:064b}".format(x)
+    xbr = xb[::-1]
+    return int(xbr, 2)
+
+
+reverse_bits = reverse_bits_rjimeno
 
 
 if __name__ == '__main__':
