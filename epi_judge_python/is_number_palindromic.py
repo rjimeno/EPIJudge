@@ -2,8 +2,9 @@ from test_framework import generic_test
 
 
 def is_palindrome_number(x):
-    # TODO - you fill in here.
-    return True
+    xs = f"{x}"
+    xr = xs[::-1]
+    return xs == xr
 
 
 if __name__ == '__main__':
