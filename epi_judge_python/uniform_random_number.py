@@ -11,9 +11,28 @@ def zero_one_random():
     return random.randrange(2)
 
 
-def uniform_random(lower_bound, upper_bound):
-    # TODO - you fill in here.
-    return 0
+def uniform_random_rjimeno(lower_bound, upper_bound):
+    randrange = upper_bound - lower_bound
+    accumulator = 0
+    for i in range(randrange):
+        accumulator += zero_one_random()
+    return accumulator + lower_bound
+
+
+def uniform_random_book(lower_bound, upper_bound):
+    number_of_outcomes = upper_bound - lower_bound
+    while True:
+        result, i = 0, 0
+        while (1 << i) < number_of_outcomes:
+            # zero_one_random() is the provided random number generator.
+            result = (result << 1) | zero_one_random()
+            i += 1
+        if result < number_of_outcomes:
+            break
+    return result + lower_bound
+
+
+uniform_random = uniform_random_book
 
 
 @enable_executor_hook
