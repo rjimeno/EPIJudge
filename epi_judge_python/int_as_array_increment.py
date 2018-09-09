@@ -2,8 +2,12 @@ from test_framework import generic_test
 
 
 def plus_one(A):
-    # TODO - you fill in here.
-    return []
+    sa = ''.join(str(a) for a in A)
+    na = int(sa)
+    na += 1
+    sa = str(na)
+    al = [int(d) for d in sa]
+    return al
 
 
 if __name__ == '__main__':
