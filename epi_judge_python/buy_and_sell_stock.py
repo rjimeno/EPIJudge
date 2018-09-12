@@ -1,5 +1,23 @@
 from test_framework import generic_test
 
+
+def buy_and_sell_stock_once_rjimeno(prices):
+    days = len(prices)
+    if 0 == days or 1 == days:
+        profit = 0.0
+    else:
+        profit = -float('inf')
+        for i in range(days - 1):
+            buy_price = min(prices[:i + 1])
+            sell_price = max(prices[i + 1:])
+            gain = sell_price - buy_price
+            if profit < gain:
+                profit = gain
+    if profit < 0.0:
+        profit = 0.0
+    return profit
+
+
 # Feels like it hangs when trying to process a list of 1*10**5 (or so)prices
 def buy_and_sell_stock_once_rjimeno_brute_force(prices):
 #    print(f" prices == {prices} ", end='')
@@ -23,11 +41,15 @@ def buy_and_sell_stock_once_rjimeno_brute_force(prices):
 
 
 def buy_and_sell_stock_once_book(prices):
-    # code goes here
-    return 0.0
+    min_price_so_far, max_profit = float('inf'), 0.0
+    for price in prices:
+        max_profit_sell_today = price - min_price_so_far
+        max_profit = max(max_profit, max_profit_sell_today)
+        min_price_so_far = min(min_price_so_far, price)
+    return max_profit
 
 
-buy_and_sell_stock_once = buy_and_sell_stock_once_rjimeno_brute_force
+buy_and_sell_stock_once = buy_and_sell_stock_once_rjimeno
 
 
 if __name__ == '__main__':
