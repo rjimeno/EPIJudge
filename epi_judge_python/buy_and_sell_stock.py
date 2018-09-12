@@ -7,8 +7,11 @@ def buy_and_sell_stock_once_rjimeno(prices):
         profit = 0.0
     else:
         profit = -float('inf')
+        low_price =  prices[0]
         for i in range(days - 1):
-            buy_price = min(prices[:i + 1])
+            buy_price = min(low_price, prices[i + 1])
+            if buy_price < low_price:
+                low_price = buy_price
             sell_price = max(prices[i + 1:])
             gain = sell_price - buy_price
             if profit < gain:
