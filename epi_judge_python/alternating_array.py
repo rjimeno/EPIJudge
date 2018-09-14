@@ -5,10 +5,12 @@ from test_framework.test_failure import PropertyName, TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
-def rearrange(A):
-    # TODO - you fill in here.
-    return
+def rearrange_book(A):
+    for i in range(len(A)):
+        A[i:i + 2] = sorted(A[i:i +2], reverse=i % 2)
+    return A
 
+rearrange = rearrange_book
 
 @enable_executor_hook
 def rearrange_wrapper(executor, A):
