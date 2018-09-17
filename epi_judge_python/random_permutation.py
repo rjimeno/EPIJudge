@@ -1,6 +1,7 @@
 import copy
 import functools
 import math
+from random import sample
 
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
@@ -8,9 +9,12 @@ from test_framework.random_sequence_checker import (
 from test_framework.test_utils import enable_executor_hook
 
 
-def compute_random_permutation(n):
-    # TODO - you fill in here.
-    return []
+def compute_random_permutation_rjimeno(n):
+    x = range(n)
+    return sample(x, k=len(x))
+
+
+compute_random_permutation = compute_random_permutation_rjimeno
 
 
 @enable_executor_hook
