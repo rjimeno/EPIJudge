@@ -1,4 +1,5 @@
 import functools
+from random import sample
 
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
@@ -7,10 +8,11 @@ from test_framework.random_sequence_checker import (
 from test_framework.test_utils import enable_executor_hook
 
 
-def random_sampling(k, A):
-    # TODO - you fill in here.
+def random_sampling_rjimeno(k, A):
+    A[:] = sample(A, k)
     return
 
+random_sampling = random_sampling_rjimeno
 
 @enable_executor_hook
 def random_sampling_wrapper(executor, k, A):
