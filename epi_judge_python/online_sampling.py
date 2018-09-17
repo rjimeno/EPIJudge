@@ -1,4 +1,5 @@
 import functools
+from random import sample
 
 from test_framework import generic_test
 from test_framework.random_sequence_checker import (
@@ -8,9 +9,11 @@ from test_framework.test_utils import enable_executor_hook
 
 
 # Assumption: there are at least k elements in the stream.
-def online_random_sample(stream, k):
-    # TODO - you fill in here.
-    return []
+def online_random_sample_rjimeno(stream, k):
+    return sample(list(stream), k)
+
+
+online_random_sample = online_random_sample_rjimeno
 
 
 @enable_executor_hook
