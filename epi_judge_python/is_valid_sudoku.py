@@ -1,10 +1,13 @@
-from test_framework import generic_test
-import math
 import collections
+import math
 
-'''
+
+from test_framework import generic_test
+
+
 # Check if a partially filled matrix has any conflicts.
 def is_valid_sudoku_book(partial_assignment):
+
     # Return True if subarray
     # partial_assignment[start_row:end_row][start_col:end_col] contains any
     # duplicates in {1, 2, ..., len(partial_assignment)}; otherwise return
@@ -17,7 +20,7 @@ def is_valid_sudoku_book(partial_assignment):
     # Check row and column constraints.
     if any(
             has_duplicate([partial_assignment[i][j] for j in range(n)])
-            or has_duplicate([partial_assignment[j][i]] for j in range(n)])
+            or has_duplicate([partial_assignment[j][i] for j in range(n)])
             for i in range(n)):
         return False
 
@@ -27,8 +30,7 @@ def is_valid_sudoku_book(partial_assignment):
         partial_assignment[a][b]
         for a in range(region_size * I, region_size * (I + 1))
         for b in range(region_size * J, region_size * (J + 1))
-    ]) for I in range(region_size) for J in range(region_size)
-'''
+    ]) for I in range(region_size) for J in range(region_size))
 
 
 def is_valid_sudoku_pythonic(partial_assignment):
@@ -39,12 +41,12 @@ def is_valid_sudoku_pythonic(partial_assignment):
                             for j, c in enumerate(row)
                             if c != 0
                             for k in ((i, str(c)), (str(c), j),
-                                      (i / region_size, j / region_size,
+                                      (i // region_size, j // region_size,
                                        str(c)))).values(),
         default=0) <= 1
 
 
-is_valid_sudoku = is_valid_sudoku_pythonic
+is_valid_sudoku = is_valid_sudoku_book
 
 
 if __name__ == '__main__':
