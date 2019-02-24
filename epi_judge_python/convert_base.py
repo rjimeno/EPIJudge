@@ -1,8 +1,9 @@
 import functools
 import string
-# Two lines above from EPIJudge solutions.
+# Two lines above comes from EPIJudge solutions.
 from test_framework import generic_test
 
+# I have yet to write my solution as this one I copied from the book.
 
 def convert_base_book(num_as_string, b1, b2):
     def construct_from_base(num_as_int, base):
